@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import AdminDashboard from './AdminDashboard';
-import WorkerDashboard from './WorkerDashboard';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import AdminDashboard from './admin-dash';
+import WorkerDashboard from './worker-dash';
 import WorkerRegistration from './WorkerRegistration';
 import TaskManagement from './TaskManagement';
 import Navbar from './Navbar';
@@ -11,13 +11,13 @@ function App() {
         <Router>
             <div>
                 <Navbar />
-                <Switch>
+                <Routes>
                     <Route path="/admin" component={AdminDashboard} />
                     <Route path="/worker" component={WorkerDashboard} />
                     <Route path="/register" component={WorkerRegistration} />
                     <Route path="/tasks" component={TaskManagement} />
                     {/* Add more routes as needed */}
-                </Switch>
+                </Routes>
             </div>
         </Router>
     );
