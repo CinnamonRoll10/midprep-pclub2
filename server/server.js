@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 
 // Connect to local Ethereum node
-const web3 = new Web3('http://localhost:8545'); // Or the URL of your Ethereum node
+const web3 = new Web3('http://localhost:7545'); // Or the URL of your Ethereum node
 
 // Load Truffle artifacts
 const contractPath = path.join(__dirname, '../build/contracts/TaskAllocation.json');
@@ -45,9 +45,12 @@ app.post('/registerWorker', async (req, res) => {
 app.get('/worker-tasks', async (req, res) => {
     const { workerId } = req.query; // Assuming worker ID is passed as query parameter
     try {
-        // Example logic to fetch tasks for a specific worker
-        // Modify this based on your smart contract functions
-        const tasks = await taskAllocation.methods.getWorkerTasks(workerId).call();
+        const taskIds = await taskAllocation.methods.getWorkerTasks(workerId).call();
+        const tasks = await Promise.all(
+            taskIds.map(async (taskId) => {
+                return await taskAllocation.methods.getTaskDetails(taskId).call();
+            })
+        );
         res.json(tasks);
     } catch (error) {
         res.status(500).send(error.message);
@@ -125,7 +128,7 @@ app.get('/checkWallet', async (req, res) => {
     const { worker_id } = req.query;
     try {
         // Fetch the worker's wallet address (this assumes you have a method to get worker details)
-        const worker = await taskAllocation.methods.getWorker(worker_id).call();
+        const worker = await taskAllocation.methods.getWorkerDetails(getWorkerIdByAddress(worker_id)).call();
         const walletAddress = worker.wallet;
 
         // Fetch the balance of the worker's wallet
