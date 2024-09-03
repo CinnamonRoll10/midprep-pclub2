@@ -27,6 +27,9 @@ contract TaskAllocation {
     uint public totalWorkers;
     mapping(uint => Worker) public workers;
     mapping(uint => Task) public tasks;
+    mapping(uint => address) public taskToWorker;
+    mapping(address => uint[]) public workerToTasks;
+    mapping(address => uint) public addressToWorkerId; // Mapping from address to worker ID
 
     event WorkerRegistered(uint workerId, address wallet);
     event TaskAdded(uint taskId, uint timeRequired);
@@ -50,6 +53,8 @@ contract TaskAllocation {
             wallet: msg.sender,
             isRegistered: true
         });
+        addressToWorkerId[msg.sender] = totalWorkers; // Map address to worker ID
+
 
         emit WorkerRegistered(totalWorkers, msg.sender);
     }
@@ -91,10 +96,15 @@ contract TaskAllocation {
         );
 
         task.workerTaskContract = address(workerTaskContract);
-
+        taskToWorker[taskId] = worker;
+        workerToTasks[worker].push(taskId);
         worker.availableHours -= task.timeRequired;
 
         emit TaskAllocated(taskId, worker.wallet, address(workerTaskContract));
+    }
+
+    function getWorkerForTask(uint taskId) public view returns (address) {
+        return taskToWorker[taskId];
     }
 
     function getWorkerDetails(uint workerId) public view returns (Worker memory) {
@@ -113,7 +123,13 @@ contract TaskAllocation {
         return allTasks;
     }
 
+    function getWorkerTasks(address worker) public view returns (uint[] memory) {
+        return workerToTasks[worker];
+    }
 
+    function getWorkerIdByAddress(address _workerAddress) public view returns (uint) {
+        return addressToWorkerId[_workerAddress];
+    }
 
     receive() external payable {}
 }
