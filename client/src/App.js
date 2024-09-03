@@ -12,10 +12,10 @@ function App() {
             <div>
                 <Navbar />
                 <Routes>
-                    <Route path="/admin" component={AdminDashboard} />
-                    <Route path="/worker" component={WorkerDashboard} />
-                    <Route path="/register" component={WorkerRegistration} />
-                    <Route path="/tasks" component={TaskManagement} />
+                    <Route path="/admin" element={<AdminDashboard />} />
+                    <Route path="/worker" element={<WorkerDashboard />} />
+                    <Route path="/register" element={<WorkerRegistration />} />
+                    <Route path="/tasks" element={<TaskManagement />} />
                     {/* Add more routes as needed */}
                 </Routes>
             </div>
