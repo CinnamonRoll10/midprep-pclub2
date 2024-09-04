@@ -1,0 +1,46 @@
+/* Container for worker registration form */
+.worker-registration-container {
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 600px;
+    background-color: #ffffff; /* White background */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Heading styles */
+.worker-registration-container h2 {
+    font-size: 1.8rem;
+    color: #1e3a8a; /* Dark blue */
+    margin-bottom: 1rem;
+}
+
+/* Input field styles */
+.worker-registration-container input {
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ced4da; /* Light gray border */
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Button styles */
+.worker-registration-container button {
+    background-color: #1e3a8a; /* Dark blue background */
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.worker-registration-container button:hover {
+    background-color: #2b4d77; /* Slightly lighter blue on hover */
+}

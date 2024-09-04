@@ -1,0 +1,66 @@
+/* Navbar styles */
+.navbar {
+    background-color: #1e3a8a; /* Dark blue */
+    padding: 1rem;
+    color: #ffffff; /* White text */
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar li {
+    margin: 0;
+}
+
+.navbar a, .navbar button {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.navbar a:hover, .navbar button:hover {
+    text-decoration: underline;
+}
+
+/* Login form styles */
+.login-form {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form input {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid #e2e8f0; /* Light gray border */
+    border-radius: 4px;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #1e3a8a; /* Dark blue */
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #1d2a6a; /* Slightly darker blue */
+}

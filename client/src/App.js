@@ -1,7 +1,8 @@
 import React from 'react';
+import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import AdminDashboard from './admin-dash';
-import WorkerDashboard from './worker-dash';
+import AdminDashboard from './AdminDashboard';
+import WorkerDashboard from './WorkerDashboard';
 import WorkerRegistration from './WorkerRegistration';
 import TaskManagement from './TaskManagement';
 import Navbar from './Navbar';

@@ -1,7 +1,7 @@
-// src/WorkerDashboard.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
+import './WorkerDashboard.css'; // Import the CSS file
 
 const WorkerDashboard = () => {
     const [tasks, setTasks] = useState([]);
@@ -33,7 +33,7 @@ const WorkerDashboard = () => {
     }, [workerId]);
 
     return (
-        <div>
+        <div className="worker-dashboard-container">
             <h1>Worker Dashboard</h1>
             {loading ? (
                 <p>Loading tasks...</p>

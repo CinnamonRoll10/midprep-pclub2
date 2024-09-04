@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { getTaskAllocationContract } from './utils';
+import './WorkerRegistration.css'; // Import the CSS file
 
 function WorkerRegistration() {
     const [availableHours, setAvailableHours] = useState('');
@@ -28,7 +29,7 @@ function WorkerRegistration() {
     };
 
     return (
-        <div>
+        <div className="worker-registration-container">
             <h2>Worker Registration</h2>
             <input
                 type="number"

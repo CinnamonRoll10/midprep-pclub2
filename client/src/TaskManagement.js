@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { getTaskAllocationContract } from './utils'; // Adjust path as needed
+import './TaskManagement.css'; // Import the CSS file
 
 function TaskManagement() {
     const [timeRequired, setTimeRequired] = useState('');
@@ -27,7 +28,7 @@ function TaskManagement() {
     };
 
     return (
-        <div>
+        <div className="task-management-container">
             <h2>Add Task</h2>
             <input
                 type="number"

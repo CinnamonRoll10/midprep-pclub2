@@ -1,6 +1,6 @@
-// src/AdminDashboard.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './admin.css'; // Import the CSS file
 
 const AdminDashboard = () => {
     const [onChainCosts, setOnChainCosts] = useState(null);
@@ -31,7 +31,7 @@ const AdminDashboard = () => {
     }, []);
 
     return (
-        <div>
+        <div className="dashboard-container">
             <h1>Admin Dashboard</h1>
 
             <section>

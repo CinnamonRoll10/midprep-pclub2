@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { getTaskAllocationContract } from './utils'; // Adjust path as needed
+import './TaskAllocation.css'; // Import the CSS file
 
 function TaskAllocation() {
     const [taskId, setTaskId] = useState('');
@@ -18,7 +19,7 @@ function TaskAllocation() {
     };
 
     return (
-        <div>
+        <div className="task-allocation-container">
             <h2>Allocate Task</h2>
             <input
                 type="number"
