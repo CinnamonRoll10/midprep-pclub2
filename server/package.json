@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "start:react": "PORT=3001 react-scripts start",
+    "start:react": "PORT=3002 react-scripts start",
     "test": "truffle test",
     "migrate": "truffle migrate"
   },
