@@ -10,13 +10,16 @@ const AdminDashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                // Fetch on-chain costs
                 const costsResponse = await axios.get('/onchain-costs');
                 setOnChainCosts(costsResponse.data);
 
+                // Fetch transaction statistics
                 const statsResponse = await axios.get('/transaction-stats');
                 setTransactionStats(statsResponse.data);
 
-                const taskStatsResponse = await axios.get('/task-stats'); // Fetch task stats
+                // Fetch task statistics
+                const taskStatsResponse = await axios.get('/task-stats');
                 setTaskStats(taskStatsResponse.data);
 
             } catch (error) {
@@ -49,7 +52,7 @@ const AdminDashboard = () => {
                     <div>
                         <p>Total Transactions: {transactionStats.transactionCount}</p>
                         <ul>
-                            {transactionStats.gasPrices.map((tx) => (
+                            {transactionStats.gasPrices.map(tx => (
                                 <li key={tx.transactionHash}>
                                     Transaction Hash: {tx.transactionHash} - Gas Price: {tx.gasPrice} Gwei
                                 </li>
