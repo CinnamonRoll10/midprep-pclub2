@@ -276,8 +276,6 @@ app.get('/task-stats', async (req, res) => {
 
 ### **6. Worker-Specific APIs**
 
-**Specific Worker Tasks API**
-
 **Endpoint:** `GET /worker/tasks`
 
 **Description:** 
@@ -330,7 +328,7 @@ app.get('/worker/tasks', async (req, res) => {
 ```
 
 
-**Add Task API**
+**7. Add Task API**
 
 **Endpoint:** `POST /addTask`
 
@@ -369,7 +367,7 @@ app.post('/addTask', async (req, res) => {
 }
 ```
 
-**Add Worker API**
+**8. Add Worker API**
 
 **Endpoint:** `POST /addWorker`
 
@@ -406,7 +404,7 @@ app.post('/addWorker', async (req, res) => {
 ```
 
 
-### **7. Check Wallet API**
+### **9. Check Wallet API**
 
 **Endpoint:** `GET /checkWallet`
 
@@ -433,6 +431,13 @@ app.get('/checkWallet', async (req, res) => {
 - Fetches the balance of the wallet.
 - Responds with a JSON object containing the wallet address and balance in Ether.
 
+**json**
+```
+{
+  "wallet": "The Ethereum wallet address associated with the worker.",
+  "balance": "The balance of the wallet in Ether (ETH)."
+}
+```
 
 #### **AdminDashboard.js**
 
