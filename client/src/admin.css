@@ -43,3 +43,17 @@
     color: #333;
     margin-bottom: 0.5rem;
 }
+
+.logout-button {
+    background-color: #e53e3e; /* Red color for the button */
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 1rem; /* Add some spacing below the button */
+}
+
+.logout-button:hover {
+    background-color: #c53030; /* Darker red on hover */
+}

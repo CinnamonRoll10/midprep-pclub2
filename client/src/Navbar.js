@@ -1,50 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import './navbar.css'; // Import the CSS file
+import { useAuth } from './AuthContext';
+import './navbar.css';
 
 function Navbar() {
-    const [showLogin, setShowLogin] = useState(false);
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleLogin = () => {
-        if (username === 'admin' && password === 'admin') {
-            // Redirect to Admin Dashboard if credentials are correct
-            window.location.href = '/admin';
-        } else {
-            alert('Invalid credentials');
-        }
-    };
+    const { isAuthenticated, logout } = useAuth();
 
     return (
         <nav className="navbar">
             <ul>
-                <li><Link to="/admin">Admin Dashboard</Link></li>
+                {isAuthenticated && <li><Link to="/admin">Admin Dashboard</Link></li>}
                 <li><Link to="/worker">Worker Dashboard</Link></li>
                 <li><Link to="/register">Worker Registration</Link></li>
                 <li><Link to="/tasks">Manage Tasks</Link></li>
-                <li><button onClick={() => setShowLogin(!showLogin)}>
-                    {showLogin ? 'Close Login' : 'Admin Login'}
-                </button></li>
+                {isAuthenticated ? (
+                    <li><button onClick={logout}>Logout</button></li>
+                ) : (
+                    <li><Link to="/login">Admin Login</Link></li>
+                )}
             </ul>
-            {showLogin && (
-                <div className="login-form">
-                    <h2>Admin Login</h2>
-                    <input
-                        type="text"
-                        placeholder="Username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <button onClick={handleLogin}>Login</button>
-                </div>
-            )}
         </nav>
     );
 }

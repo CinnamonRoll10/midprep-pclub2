@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 import './admin.css'; // Import the CSS file
 
 const AdminDashboard = () => {
     const [onChainCosts, setOnChainCosts] = useState(null);
     const [transactionStats, setTransactionStats] = useState(null);
     const [taskStats, setTaskStats] = useState(null); // State for task stats
+    const { logout } = useAuth(); // Access the logout function from AuthContext
+    const navigate = useNavigate(); // Hook for navigation
 
     useEffect(() => {
         const fetchData = async () => {
@@ -30,9 +34,15 @@ const AdminDashboard = () => {
         fetchData();
     }, []);
 
+    const handleLogout = () => {
+        logout(); // Perform the logout operation
+        navigate('/login'); // Redirect to the login page
+    };
+
     return (
-        <div className="dashboard-container">
+        <div>
             <h1>Admin Dashboard</h1>
+            <button onClick={handleLogout} className="logout-button">Logout</button> {/* Logout button */}
 
             <section>
                 <h2>On-Chain Costs Overview</h2>
