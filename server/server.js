@@ -1,6 +1,6 @@
 // server/server.js
 const express = require('express');
-const Web3 = require('web3');
+const {Web3} = require('web3');
 const path = require('path');
 const fs = require('fs');
 
@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 
 // Connect to local Ethereum node
-const web3 = new Web3('http://localhost:7545'); // Or the URL of your Ethereum node
+const web3 = new Web3('http://127.0.0.1:7545');  // Or the URL of your Ethereum node
 
 // Load Truffle artifacts
 const contractPath = path.join(__dirname, '../build/contracts/TaskAllocation.json');
