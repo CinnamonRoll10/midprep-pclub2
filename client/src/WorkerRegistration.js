@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getTaskAllocationContract } from './TaskAllocation';
+import { getTaskAllocationContract } from './utils';
 
 function WorkerRegistration() {
     const [availableHours, setAvailableHours] = useState('');
