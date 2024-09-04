@@ -8,6 +8,7 @@ contract WorkerTaskContract {
     uint public hourlyWage;
     uint public deadline;
     bool public taskCompleted;
+    uint public startTime;
 
     event TaskCompleted(uint payment, address worker);
 
@@ -23,6 +24,7 @@ contract WorkerTaskContract {
         timeRequired = _timeRequired;
         hourlyWage = _hourlyWage;
         deadline = _deadline;
+        startTime = block.timestamp;
         taskCompleted = false;
     }
 
@@ -37,10 +39,14 @@ contract WorkerTaskContract {
     }
 
     function completeTask() public onlyWorker {
-        require(block.timestamp >= deadline, "Cannot complete task before the deadline");
         require(!taskCompleted, "Task already completed");
 
-        uint payment = timeRequired * hourlyWage;
+        uint timeWorked = block.timestamp - startTime;
+        if (timeWorked > timeRequired) {
+            timeWorked = timeRequired; // Cap the time worked to the maximum required time
+        }
+
+        uint payment = (timeWorked / 1 hours) * hourlyWage; // Calculate payment based on actual hours worked
 
         (bool success, ) = worker.call{value: payment}("");
         require(success, "Payment failed");
